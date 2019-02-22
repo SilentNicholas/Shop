@@ -58,6 +58,11 @@ if(isset($_POST['signup'])){
     header('Location: ./registration.php');
 }
 ?>
+<p>
+<div style="color: green;">Переход к <a href="./table_products.php">
+списку</a> товаров.</div>
+</p>
+
 <form action="./signup.php" method="POST">
 
 <p>

@@ -51,7 +51,8 @@ if(isset($data['do_products'])){
 		$mysqli->query(
 			"INSERT INTO products VALUES( NULL, '$name', '$status', '$price', '$descr', '$weight', '$material','$creater', '$added_time', '$update_time');");
 		$mysqli->close();
-		echo'<div style="color: green;">Товар успешно добавлен!</div><hr>';
+		echo'<div style="color: green;">Товар успешно добавлен!</div><br>
+		<div style="color: green;">Переход к <a href="./table_products.php">списку</a> товаров.</div><hr>';
 	}
 }
 ?>
