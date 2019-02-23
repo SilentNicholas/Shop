@@ -53,7 +53,9 @@ if(isset($_POST['signup'])){
     		'$email',
     		'$password');");
     $mysqli->close();
-    echo'<div style="color: green;">Вы успешно зарегистрированы!</div><hr>';
+    echo'<div style="color: green;">Вы успешно зарегистрированы!</div><hr>';?>
+    <?= header("Location: ./login.php") ?>
+    <?php
     }else{
     	echo'<div style="color: red;">'.array_shift($errors).'</div><hr>';
     }
@@ -74,19 +76,19 @@ if(isset($_POST['signup'])){
     </head>
 <body>
 <form action="./signup.php" method="POST">
-    <div class="container">
+    <div class="container mt-5" align="center">
+         <div class="col-md-6">
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1">Пользователь</span>
   </div>
   <input type="text" name="login" class="form-control" aria-label="login" aria-describedby="basic-addon1" placeholder="Ваш логин">
 </div>
-
 <div class="input-group mb-3">
-  <input type="email" name="email" class="form-control" placeholder="Ваш email" aria-label="Recipient's email" aria-describedby="basic-addon2">
-  <div class="input-group-append">
-    <span class="input-group-text" id="basic-addon2">@example.net</span>
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Почтовый ящик</span>
   </div>
+  <input type="email" name="email" class="form-control" aria-label="email" aria-describedby="basic-addon1" placeholder="Ваш email">
 </div>
 
 <div class="input-group mb-3">
@@ -103,9 +105,10 @@ if(isset($_POST['signup'])){
   <input type="password" name="password_2" class="form-control" aria-label="password" aria-describedby="basic-addon1" placeholder="Повторите ваш пароль">
 </div>
 </div>
+</div>
 
 <div class="container" align="center">
-	<button type="button" name="signup" class="btn btn-success btn-lg">Регистрация</button>
+	<button type="submit" name="signup" class="btn btn-success btn-lg">Регистрация</button>
 </div>
 
 </form>

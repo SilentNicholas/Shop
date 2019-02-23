@@ -19,7 +19,7 @@ require "dtabase/db.php";
 <div class="jumbotron container-sm" align="center">
 	<?php if(isset($_SESSION['remb_user'])){ ?>
 	<h1 class="display-4">Вы авторизованы!</h1>
-	<a class="btn btn-outline-secondary" href="./products.php"" role="button">Приступить к работе</a>
+	<a class="btn btn-outline-secondary" href="./products.php"" role="button">Добавить новый товар</a>
 	<a class="btn btn-success" btn-lg" href="./logout.php"" role="button">Выход</a>
 	<a class="btn btn-outline-secondary" btn-lg" href="./table_products.php"" role="button">Помотреть список товаров</a>
 	<?php }else{ ?>

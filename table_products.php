@@ -31,18 +31,16 @@ require "dtabase/db_products.php";
       <th scope="col">Creater</th>
       <th scope="col">Added Date</th>
       <th scope="col">Update Date</th>
-      <th scope="col">Delete Record</th>
+      <th scope="col">Your Actions</th>
     </tr>
   </thead>
   <?php
   $mysqli = new mysqli("localhost", "root", "", "registration");
   $result = $mysqli->query("SELECT * FROM products;");
   $new = $result->fetch_assoc();
+  $id = $new['product_id'];
   $data = $_POST;
   foreach ($result as  $table) {
-  	if(isset($data['deleted'])){
-     $res = $mysqli->query("DELETE FROM products WHERE product_id = '$new[product_id]';");
- }
  ?>
   <tbody>
     <tr align="center">
@@ -56,11 +54,17 @@ require "dtabase/db_products.php";
       <td><?= $table['product_added_date']?></td>
       <td><?= $table['product_update_date']?></td>
       <form action="./table_products.php" method="POST">
-      <td><button type="submit" name="deleted" class="btn btn-danger" values="<?= $res ?>">Delete</button></td>
-      </form>
+      <td>
+         <a class="btn btn-warning btn-sm" href="./edit.php" role="button" name="edit">Редактировать</a>
+         <button type="submit" name="order" class="btn btn-success btn-sm">Заказать</button>
+         <button type="submit" name="deleted" class="btn btn-danger btn-sm">Удалить</button>
+      </td>
+     </form>
     </tr>
    <?php }
-  
+  if(isset($data['deleted'])){
+    $res = $mysqli->query("DELETE FROM products WHERE product_id ='$id';");
+}
    $result->close();
    $mysqli->close();
     ?>
