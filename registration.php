@@ -16,10 +16,12 @@ require "dtabase/db.php";
 	</style>
 	</head>
 <body>
-<div class="jumbotron container" align="center">
+<div class="jumbotron container-sm" align="center">
 	<?php if(isset($_SESSION['remb_user'])){ ?>
 	<h1 class="display-4">Вы авторизованы!</h1>
-	<a class="btn btn-primary btn-lg" href="./logout.php"" role="button">Выход</a>
+	<a class="btn btn-outline-secondary" href="./products.php"" role="button">Приступить к работе</a>
+	<a class="btn btn-success" btn-lg" href="./logout.php"" role="button">Выход</a>
+	<a class="btn btn-outline-secondary" btn-lg" href="./table_products.php"" role="button">Помотреть список товаров</a>
 	<?php }else{ ?>
   <h1 class="display-4">Вы не авторизованы!</h1>
   <p class="lead">Мы рады приветствовать вас на нашем сайте!</p>

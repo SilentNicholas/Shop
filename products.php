@@ -31,6 +31,7 @@ if(isset($data['do_products'])){
 	$mysqli = new mysqli("localhost", "root", "", "registration");
     $res = $mysqli->query("SELECT * FROM products WHERE product_name = '$data[name]' AND product_status = '$data[status]' AND product_price = '$data[price]' AND product_description = '$data[description]' AND product_weight = '$data[weight]' AND product_material = '$data[material]' AND product_creater = '$data[creater]';");
     $unique = $res->num_rows;
+
 	if($unique > 0){
 		$errors[] = 'Данный товар уже существует!';
 	}
