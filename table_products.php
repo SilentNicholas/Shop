@@ -11,7 +11,7 @@ require "dtabase/db_products.php";
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" href="bootstrap/css/bootstrap.min.css">
 	<style>
 		body {
-			background-image: url("./apples.jpg");
+			background-image: url("./picture/apples.jpg");
 		}
 	</style>
 </head>
@@ -37,9 +37,6 @@ require "dtabase/db_products.php";
   <?php
   $mysqli = new mysqli("localhost", "root", "", "registration");
   $result = $mysqli->query("SELECT * FROM products;");
-  $new = $result->fetch_assoc();
-  $id = $new['product_id'];
-  $data = $_POST;
   foreach ($result as  $table) {
  ?>
   <tbody>
@@ -53,19 +50,14 @@ require "dtabase/db_products.php";
       <td><?= $table['product_creater']?></td>
       <td><?= $table['product_added_date']?></td>
       <td><?= $table['product_update_date']?></td>
-      <form action="./table_products.php" method="POST">
       <td>
-         <a class="btn btn-warning btn-sm" href="./edit.php" role="button" name="edit">Редактировать</a>
-         <button type="submit" name="order" class="btn btn-success btn-sm">Заказать</button>
-         <button type="submit" name="deleted" class="btn btn-danger btn-sm">Удалить</button>
+         <a class="btn btn-warning btn-sm" href="./edit.php?id=<?=$table['product_id']?>" role="button" name="edit">Редактировать</a>
+         <a class="btn btn-success btn-sm"  href="./basket.php?id=<?=$table['product_id']?>" role="button" name="basket">Заказать</a>
+         <a class="btn btn-danger btn-sm" href="./deleted.php?id=<?=$table['product_id']?>" role="button" name="deleted">Удалить</a>
       </td>
-     </form>
     </tr>
-   <?php }
-  if(isset($data['deleted'])){
-    $res = $mysqli->query("DELETE FROM products WHERE product_id ='$id';");
+   <?php
 }
-   $result->close();
    $mysqli->close();
     ?>
      </div>

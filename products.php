@@ -52,8 +52,7 @@ if(isset($data['do_products'])){
 		$mysqli->query(
 			"INSERT INTO products VALUES( NULL, '$name', '$status', '$price', '$descr', '$weight', '$material','$creater', '$added_time', '$update_time');");
 		$mysqli->close();
-		echo'<div style="color: green;">Товар успешно добавлен!</div><br>
-		<div style="color: green;">Переход к <a href="./table_products.php">списку</a> товаров.</div><hr>';
+		echo'<div style="color: green;">Товар успешно добавлен!</div><br><hr>';
 	}
 }
 ?>
@@ -66,7 +65,7 @@ if(isset($data['do_products'])){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" href="bootstrap/css/bootstrap.min.css">
     <style>
         body {
-            background-image: url("./blackberry.jpeg");
+            background-image: url("./picture/blackberry.jpeg");
         }
     </style>
     </head>
@@ -83,8 +82,8 @@ if(isset($data['do_products'])){
 
 <div class="input-group mb-3">
   <select class="custom-select" name="status" id="inputGroupSelect02">
-    <option value="1">Are available</option>
-    <option value="2">Not available</option>
+    <option value="Are available">Are available</option>
+    <option value="Not available">Not available</option>
   </select>
   <div class="input-group-append">
     <label class="input-group-text" for="inputGroupSelect02">Status</label>
@@ -124,6 +123,7 @@ if(isset($data['do_products'])){
     <span class="input-group-text">Description</span>
   </div>
   <textarea class="form-control" name="description" aria-label="description" placeholder="Описание товара..."></textarea>
+</div>
 </div>
 </div>
 

@@ -70,7 +70,7 @@ if(isset($_POST['signup'])){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" href="bootstrap/css/bootstrap.min.css">
     <style>
         body {
-            background-image: url("./strawberry.jpg");
+            background-image: url("./picture/strawberry.jpg");
         }
     </style>
     </head>

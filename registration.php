@@ -11,7 +11,7 @@ require "dtabase/db.php";
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" href="bootstrap/css/bootstrap.min.css">
 	<style>
 		body {
-			background-image: url("./vegetables.jpg");
+			background-image: url("./picture/blueberry.jpeg");
 		}
 	</style>
 	</head>
