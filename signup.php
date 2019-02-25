@@ -52,13 +52,47 @@ if(isset($_POST['signup'])){
     		'$login',
     		'$email',
     		'$password');");
-    $mysqli->close();
-    echo'<div style="color: green;">Вы успешно зарегистрированы!</div><hr>';?>
-    <?= header("Location: ./login.php") ?>
+    $mysqli->close(); ?>
+
+<div class="container">
+ <div class="alert alert-success alert-dismissible fade show" align="center" role="alert">
+  <strong>Операция выполнена!</strong> Вы успешно зарегистрированы!
+   <a class="btn btn-primary" btn-lg" href="./login.php"" role="button">Авторизоваться</a>
+  </button>
+ </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Уведомление!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Вы успешно зарегистрированы!</p>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-danger" btn-lg" href="./logout.php"" role="button">Выход</a>
+        <a class="btn btn-primary" btn-lg" href="./logint.php"" role="button">Авторизоваться</a>
+      </div>
+    </div>
+  </div>
+</div>
+
     <?php
-    }else{
-    	echo'<div style="color: red;">'.array_shift($errors).'</div><hr>';
-    }
+    }else{ ?>
+<div class="container">
+ <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Данные некорректны!</strong> <?=array_shift($errors)?>
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+</div>
+   <?php }
 }
 ?>
 
@@ -75,6 +109,11 @@ if(isset($_POST['signup'])){
     </style>
     </head>
 <body>
+ <div align="right">
+  <div class="mt-3 col">
+   <a class="btn btn-danger" btn-lg" href="./logout.php"" role="button">Выход</a>
+  </div>
+ </div>
 <form action="./signup.php" method="POST">
     <div class="container mt-5" align="center">
          <div class="col-md-6">

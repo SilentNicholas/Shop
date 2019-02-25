@@ -1,5 +1,15 @@
 <?php
-require "dtabase/db_products.php";
+require "dtabase/db.php";
+if(isset($_GET['error'])){ ?>
+<div class="container">
+ <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Корзина пуста!</strong> Вы еще не выбрали товар!
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+</div>
+<?php }
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +26,12 @@ require "dtabase/db_products.php";
 	</style>
 </head>
 <body>
-	<div class="container table-responsive">
+ <div align="right">
+  <div class="mt-3 col">
+   <a class="btn btn-danger" btn-lg" href="./logout.php"" role="button">Выход</a>
+  </div>
+ </div>
+ 	<div class="container table-responsive">
 	<div class="row">
     <div class="mt-3 col">
 	<table class="table table-dark table-hover table-bordered table-sm">
@@ -63,7 +78,10 @@ require "dtabase/db_products.php";
      </div>
   </tbody>
 </table>
+<div class="container">
 <a scope class="btn btn-info" href="./products.php" role="button">Добавить новый товар</a>
+<a scope class="btn btn-success" href="./shop_case.php" role="button">Корзина</a>
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>

@@ -35,9 +35,16 @@ if(password_verify($_POST['password'], $row_pass[0])){
 	$errors[] = "Пользователь с таким логином не найден!";
 }
 
- if( ! empty($errors)){
-    	echo'<div style="color: red;">'.array_shift($errors).'</div><hr>';
-    }
+ if(!empty($errors)){?>
+<div class="container">
+ <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Данные некорректны!</strong> <?=array_shift($errors)?>
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+</div>
+   <?php }
 }
 ?>
 <html>
@@ -48,17 +55,22 @@ if(password_verify($_POST['password'], $row_pass[0])){
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" href="bootstrap/css/bootstrap.min.css">
 	<style>
 		body {
-			background-image: url("./enter.jpg");
+			background-image: url("picture/enter.jpg");
 		}
 	</style>
 	</head>
 <body>
+ <div align="right">
+  <div class="mt-3 col">
+   <a class="btn btn-danger" btn-lg" href="./logout.php"" role="button">Выход</a>
+  </div>
+ </div>
 <div class="jumbotron container" align="center">
 <form action="./login.php" method="POST">
   <div class="form-group">
     <label for="exampleInputEmail1"><strong>Логин</strong></label>
     <input type="text" class="form-control form-control" name="login" placeholder="Введите логин">
-    <small id="emailHelp" class="form-text text-muted">Мы никогда не рассказываем пароли пользователей!</small>
+    <small id="emailHelp" class="form-text text-muted">Мы никогда не рассказываем личные данные пользователей!</small>
   </div>
   <div class="form-group">
   <label for="exampleInputPassword1"><strong>Пароль</strong></label>

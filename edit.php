@@ -1,14 +1,13 @@
 <?php
-require "dtabase/db_products.php";
+require "dtabase/db.php";
+$id = $_GET['id'];
 ?>
 
 <?php
-$id = $_GET['id'];
 $data = $_POST;
 $mysqli = new mysqli("localhost", "root", "", "registration");
 $select= $mysqli->query("SELECT * FROM products WHERE product_id ={$id};");
 $query = $select->fetch_assoc();
-$select->close();
 if(isset($data['do_edit'])){
 $errors =[];
 	if(trim($data['name']) == ''){
@@ -54,8 +53,8 @@ $errors =[];
     $creater = $data['creater'];
     $update_date = date('Y-m-d', time());
     $descr = $data['description'];
-    $id = $query['product_id'];
-	$mysqli->query("UPDATE products SET product_name ='$name', product_status ='$status', product_price ='$price', product_weight ='$weight', product_material ='$material', product_creater ='$creater', product_description ='$descr', product_update_date ='$update_date' WHERE product_id ='$id';");
+    $prod_id = $query['product_id'];
+	$mysqli->query("UPDATE products SET product_name ='$name', product_status ='$status', product_price ='$price', product_weight ='$weight', product_material ='$material', product_creater ='$creater', product_description ='$descr', product_update_date ='$update_date' WHERE product_id ='$prod_id';");
     }
 }
 $mysqli->close();

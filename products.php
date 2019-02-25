@@ -1,5 +1,5 @@
 <?php
-require "dtabase/db_products.php";
+require "dtabase/db.php";
 
 $data = $_POST;
 if(isset($data['do_products'])){
@@ -37,9 +37,17 @@ if(isset($data['do_products'])){
 	}
 	$res->close();
     
-	if(!empty($errors)){
-		echo'<div style="color: red;">'.array_shift($errors).'</div><hr>';
-	}else{
+	if(!empty($errors)){ ?>
+		<div class="container">
+ <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Данные некорректны!</strong> <?=array_shift($errors)?>
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+</div>
+	   <?php
+	    }else{
 		$name = $data['name'];
 		$status = $data['status'];
 		$price = $data['price'];
@@ -51,9 +59,17 @@ if(isset($data['do_products'])){
 		$descr = $data['description'];
 		$mysqli->query(
 			"INSERT INTO products VALUES( NULL, '$name', '$status', '$price', '$descr', '$weight', '$material','$creater', '$added_time', '$update_time');");
-		$mysqli->close();
-		echo'<div style="color: green;">Товар успешно добавлен!</div><br><hr>';
-	}
+		$mysqli->close();?>
+		<div class="container">
+ <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Операция прошла успешно!</strong> Товар добавлен!
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+</div>
+
+	<?php }
 }
 ?>
 
@@ -70,6 +86,11 @@ if(isset($data['do_products'])){
     </style>
     </head>
 <body>
+ <div align="right">
+  <div class="mt-3 col">
+   <a class="btn btn-danger" btn-lg" href="./logout.php"" role="button">Выход</a>
+  </div>
+ </div>
 	<form action="./products.php" method="POST">
  	<div class="container mt-5" align="center">
  	<div class="col-md-6">
